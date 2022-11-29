@@ -58,13 +58,6 @@ public class Playlist {
         int numberOfSteps = 0;
         this.currentIndex = currentIndex;
         while (!desiredSong.equals(getCurrentSelection())) {
-            String songInPlaylist = songNameArray[currentIndex];
-            Boolean isSongInPlaylistCurrentSelectedSong = getCurrentSelection().equalsIgnoreCase(songInPlaylist);
-            Boolean isCurrentSelectedSongDesiredSong = getCurrentSelection().equalsIgnoreCase(desiredSong);
-            Boolean isCorrectSong = isSongInPlaylistCurrentSelectedSong && isCurrentSelectedSongDesiredSong;
-            if (isCorrectSong) {
-                return numberOfSteps;
-            }
             directionMutator.run();
             numberOfSteps++;
         }
