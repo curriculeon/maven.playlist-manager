@@ -13,7 +13,7 @@ public class Playlist {
     public Playlist(String[] songNameArray) {
         index = 0;
         list = songNameArray;
-
+        //new Playlist(0, songNameArray);
     }
 
     public Playlist(int currentIndex, String[] songNameArray) {
@@ -30,9 +30,9 @@ public class Playlist {
     }
 
     public void goToPreviousSong() {
-        if (index == 0){
+        if (index == 0)
             index = list.length-1;
-        }else
+        else
             index --;
     }
 
@@ -44,7 +44,9 @@ public class Playlist {
     }
 
     public Integer getMinimumNumberOfStepsBetween(Integer currentIndex, String desiredSong) {
-        return Math.min(getNumberOfStepsBetween(currentIndex, desiredSong, this::goToNextSong),getNumberOfStepsBetween(currentIndex, desiredSong, this::goToPreviousSong) );
+
+        return Math.min(getForwardNumberOfStepsBetween(currentIndex, desiredSong), getBackwardNumberOfStepsBetween(currentIndex, desiredSong));
+        //return Math.min(getNumberOfStepsBetween(currentIndex, desiredSong, this::goToNextSong),getNumberOfStepsBetween(currentIndex, desiredSong, this::goToPreviousSong) );
     }
 
     public Integer getNumberOfStepsBetween(Integer currentIndex, String desiredSong, Runnable directionMutator) {
@@ -63,7 +65,14 @@ public class Playlist {
     }
 
     public Integer getBackwardNumberOfStepsBetween(Integer currentIndex, String desiredSong) {
+        int count = 0;
+        index = currentIndex;
+        while(!getCurrentSelection().equals(desiredSong)){
+            goToPreviousSong();
+            count++;
+        }
+        return count;
 
-        return getNumberOfStepsBetween(currentIndex, desiredSong, this::goToPreviousSong);
+        //return getNumberOfStepsBetween(currentIndex, desiredSong, this::goToPreviousSong);
     }
 }

@@ -23,35 +23,20 @@ public class GoToPreviousSongTest {
     @Test
     public void test1() {
         // given
-        test(0, new String[]{
-                "wheniseeyouagain",
-                "borntorun",
-                "nothingelsematters",
-                "cecelia"
-        }, "cecelia");
+        test(0, new String[]{"wheniseeyouagain", "borntorun", "nothingelsematters", "cecelia"}, "cecelia");
     }
 
 
     @Test
     public void test2() {
         // given
-        test(1, new String[]{
-                "wheniseeyouagain",
-                "borntorun",
-                "nothingelsematters",
-                "cecelia"
-        }, "wheniseeyouagain");
+        test(1, new String[]{"wheniseeyouagain", "borntorun", "nothingelsematters", "cecelia"}, "wheniseeyouagain");
     }
 
 
     @Test
     public void test3() {
         // given
-        test(3, new String[]{
-                "wheniseeyouagain",
-                "borntorun",
-                "nothingelsematters",
-                "cecelia"
-        }, "nothingelsematters");
+        test(3, new String[]{"wheniseeyouagain", "borntorun", "nothingelsematters", "cecelia"}, "nothingelsematters");
     }
 }
