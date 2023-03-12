@@ -4,6 +4,7 @@ package com.github.curriculeon;
 import java.util.List;
 
 public class PlaylistManager {
+    private Playlist list;
     public PlaylistManager(String[] songs) {
     }
 
