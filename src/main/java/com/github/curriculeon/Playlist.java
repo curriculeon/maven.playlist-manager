@@ -53,7 +53,7 @@ public class Playlist {
         int count = 0;
         index = currentIndex;
         while(!getCurrentSelection().equals(desiredSong)){
-            goToNextSong();
+            directionMutator.run();
             count++;
         }
         return count;
@@ -65,14 +65,6 @@ public class Playlist {
     }
 
     public Integer getBackwardNumberOfStepsBetween(Integer currentIndex, String desiredSong) {
-        int count = 0;
-        index = currentIndex;
-        while(!getCurrentSelection().equals(desiredSong)){
-            goToPreviousSong();
-            count++;
-        }
-        return count;
-
-        //return getNumberOfStepsBetween(currentIndex, desiredSong, this::goToPreviousSong);
+        return getNumberOfStepsBetween(currentIndex, desiredSong, this::goToPreviousSong);
     }
 }
