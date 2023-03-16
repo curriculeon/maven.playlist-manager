@@ -24,7 +24,7 @@ public class SetPlaylistTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testSetPlaylistWithNullInput() {
+    public void testSetPlaylistWithNullInput(){
         // Given
         PlaylistManager manager = new PlaylistManager();
         Playlist newPlaylist = null;
