@@ -15,11 +15,8 @@ public class PlaylistManager {
     }
 
     public PlaylistManager(List<String> songs) {
-        String [] son = new String[songs.size()];
-        for (int x = 0; x<songs.size(); x++){
-            son[x] = songs.get(x);
-        }
-        list = new Playlist(son);
+
+        list = new Playlist(songs.toArray(new String[0]));
     }
 
     public PlaylistManager() {
@@ -31,6 +28,7 @@ public class PlaylistManager {
     }
 
     public void setPlaylist(Playlist playlist) {
+        if (playlist == null) throw new IllegalArgumentException();
         list = playlist;
 
     }
@@ -43,14 +41,17 @@ public class PlaylistManager {
         ArrayList<String> newList = new ArrayList<String>();
         Collections.addAll(newList, list.getSongNameArray());
         newList.add(songToAdd);
-        list = new Playlist(newList.toArray(new String[0]));
+        setPlaylist(newList.toArray(new String[0]));
     }
 
     public void removeSong(String songToRemove) {
+        if(list.getSongNameArray().length == 0){
+            throw new IllegalArgumentException();
+        }
         ArrayList<String> newList = new ArrayList<String>();
         Collections.addAll(newList, list.getSongNameArray());
         newList.remove(songToRemove);
-        list = new Playlist(newList.toArray(new String[0]));
+        setPlaylist(newList.toArray(new String[0]));
 
     }
 
